@@ -1,0 +1,66 @@
+body {
+    font-family: Verdana, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #aaf3f3;
+}
+h1 {
+    font-weight: bold;
+}
+.completed {
+    text-decoration: line-through;
+    color: #ff02028d;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete {
+    margin-left: 20px;
+}
+.styled-heading {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+}
+.gradient-text {
+    background: linear-gradient(to right, #5a00bb, #b9049e);
+    background-clip: text;
+    color:transparent;
+}
+.typing{
+    font-family: italic;
+    color: #ff0e0e98;
+    font-size: 20px;
+    white-space:nowrap;
+    overflow:hidden;
+    width:0;
+    border-right: 2px solid black;
+    animation: typing 4s steps(60,end) forwards;
+}
+@keyframes typing {
+    from {width: 0;}
+    to {width: 100%;}
+}
+.glow{
+    padding:7px 100px 10px;
+    justify-content: center;
+    font-family:italic ;
+    border:2.2px dotted white;
+    color:white;
+    margin:20px;
+    border-radius: 50px;
+    background-color: rgb(4, 122, 59);
+    box-shadow:0 0 10px rgb(34, 180, 203);
+    animation:glow 1s infinite alternate;
+}
+@keyframes glow{
+    from{box-shadow: 0 0 10px rgb(56, 222, 98);}
+    to{box-shadow: 0 0 30px red,0 0 60px blue;}
+}

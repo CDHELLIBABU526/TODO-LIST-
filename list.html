@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List App</title>
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-4">TO-DO LIST</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="list.html" class="nav-link active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Project Info</a></li>
+        </ul>
+      </header>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container mt-5" class="glow">
+        <div class="text-center mb-4">
+            <h1 class="styled-heading">
+                <span class="badge bg-primary me-2">📋</span> 
+                <span class="gradient-text">To-Do List</span>
+                <span class="badge bg-success ms-2">✔️</span>
+            </h1>
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" id="task" class="form-control" placeholder="Add a new task here..." />
+            <button class="btn btn-danger" id="add">Add Task</button>
+        </div>
+
+        <h5 class="typing">Present Tasks::</h5>
+        <ul class="list-group mb-4" id="taskList"><li class="list-group-item text-muted text-center" id="emptyTask">No tasks yet</li></ul>
+        <button class="btn btn-secondary mb-3" onclick="downloadTasks()">Download Tasks</button>
+
+        <h5 class="typing">Completed Tasks::</h5>
+        <ul class="list-group" id="completedList"><li class="list-group-item text-muted text-center" id="emptyCompleted">No completed tasks yet</li></ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5 mb-3">
+        <p>&copy; 2025 To-Do List App | Version 2.o</p>
+    </footer>
+
+    <!-- jQuery & Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>    
+    <footer class="glow" style="display: flex; justify-content: center; align-items: center;"><b> L  &  T  P R O J E C T (T O - D O L I S T)[ S V C E T ]</b></footer>
+    <script>
+        function downloadTasks() {
+            const taskItems = document.querySelectorAll("#taskList li");
+            let tasks = [];
+        
+            taskItems.forEach(item => {
+                if (item.id !== "emptyTask") {
+                    tasks.push(item.textContent.trim());
+                }
+            });
+        
+            if (tasks.length === 0) {
+                alert("No tasks to download.");
+                return;
+            }
+        
+            const blob = new Blob([tasks.join("\n")], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "todo_tasks.txt";
+            a.click();
+        
+            URL.revokeObjectURL(url);
+        }
+        </script>
+        
+</body>
+</html>
